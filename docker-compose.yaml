@@ -1,0 +1,16 @@
+services:
+  database:
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      APPLICATION_SCHEMA: ${DATABASE_SCHEMA}
+      APPLICATION_USER: ${DATABASE_USERNAME}
+      APPLICATION_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - db-data:/var/lib/postgresql/data
+    build:
+      context: ./database
+    networks:
+      - default
