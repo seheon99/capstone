@@ -14,3 +14,18 @@ services:
       context: ./database
     networks:
       - default
+  frontend:
+    environment:
+      STARTUP_MODE: ${STARTUP_MODE}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./frontend/src:/app/src:ro
+    build:
+      context: ./frontend
+    ports:
+      - "${FRONTEND_PORT}:3000"
+    networks:
+      - default
+
+volumes:
+  db-data:

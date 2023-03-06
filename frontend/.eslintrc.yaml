@@ -1,0 +1,23 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:import/typescript
+  - plugin:import/recommended
+  - prettier
+rules:
+  import/order:
+    - error
+    - groups: [builtin, external, [parent, sibling], index, type]
+      alphabetize: { order: 'asc', caseInsensitive: true }
+      newlines-between: always
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+  project: ./tsconfig.json
+settings:
+  import/resolver:
+    typescript: true
+    node: true
