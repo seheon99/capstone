@@ -1,22 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Navigation from './Navigation';
-
-const LINKS = [
-  { label: 'Apple', to: 'https://apple.com' },
-  { label: 'Google', to: 'https://google.com' },
-];
+import styles from './App.module.scss';
+import Header from './containers/header';
+import { ProblemBoard } from './containers/problem-board';
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Navigation links={LINKS} />
+    <div className={styles.wrapper}>
+      <Header />
+      <div className={styles.body}>
         <Routes>
-          <Route path='/problems' element={<p>This is problems page</p>} />
+          <Route path='/' element={<div>Home</div>} />
+          <Route path='/problems' element={ProblemBoard()} />
         </Routes>
-      </BrowserRouter>
+      </div>
     </div>
   );
 }

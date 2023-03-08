@@ -1,0 +1,22 @@
+@import '../../index.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #000;
+  margin: 4rem 0 2rem 0;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: $color-gray-500;
+  margin: 2rem 0;
+}

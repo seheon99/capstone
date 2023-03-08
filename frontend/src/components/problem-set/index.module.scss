@@ -1,0 +1,49 @@
+@import '../../index.scss';
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  table-layout: fixed;
+
+  thead {
+    border-bottom: 3px solid $color-primary-300;
+    th {
+      padding: 0.35em;
+      white-space: nowrap;
+      font-size: 1.25em;
+    }
+  }
+
+  tbody {
+    border-bottom: 3px solid $color-primary-300;
+    tr {
+      border-bottom: 2px solid #ddd;
+
+      td {
+        padding: 0.75em;
+      }
+
+      &:hover {
+        background-color: $color-gray-100;
+      }
+    }
+  }
+
+  tfoot {
+    td {
+      padding: 0.35em;
+      font-size: 1.25em;
+      text-align: left;
+    }
+  }
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignLeft {
+  text-align: left;
+}

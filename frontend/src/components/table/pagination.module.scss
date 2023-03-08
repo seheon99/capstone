@@ -1,0 +1,30 @@
+@import '../../index.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-black;
+    background-color: $color-white;
+    text-decoration: none;
+    font-size: 1em;
+  }
+
+  .active {
+    background-color: $color-primary-500;
+    color: $color-white;
+  }
+
+  .nonactive {
+    &:hover {
+      background-color: $color-gray-100;
+    }
+  }
+}
