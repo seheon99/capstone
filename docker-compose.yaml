@@ -1,5 +1,7 @@
 services:
   database:
+    build:
+      context: ./database
     environment:
       POSTGRES_USER: ${POSTGRES_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -7,25 +9,29 @@ services:
       APPLICATION_SCHEMA: ${DATABASE_SCHEMA}
       APPLICATION_USER: ${DATABASE_USERNAME}
       APPLICATION_PASSWORD: ${DATABASE_PASSWORD}
+    networks:
+      - default
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - db-data:/var/lib/postgresql/data
-    build:
-      context: ./database
-    networks:
-      - default
+
   frontend:
+    build:
+      context: ./frontend
     environment:
       STARTUP_MODE: ${STARTUP_MODE}
+      WDS_SOCKET_PORT: ${FRONTEND_PORT}
+    networks:
+      - default
+    ports:
+      - "${FRONTEND_PORT}:3000"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./frontend/src:/app/src:ro
-    build:
-      context: ./frontend
-    ports:
-      - "${FRONTEND_PORT}:3000"
-    networks:
-      - default
+
+networks:
+  default:
+    driver: bridge
 
 volumes:
   db-data:
